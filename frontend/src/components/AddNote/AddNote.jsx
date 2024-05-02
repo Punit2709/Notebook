@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import NoteContext from "../../contexts/Notes/NoteContext";
 
-function AddNote() {
+function AddNote(props) {
   const context = useContext(NoteContext);
   const { addNote } = context;
 
@@ -12,6 +12,7 @@ function AddNote() {
 
     // after adding empty form
     setNoteData({title: "", description:"", tag:""});
+    props.showAlert('Added Succefully', 'Success');
   };
 
   const onChange = (e) => {

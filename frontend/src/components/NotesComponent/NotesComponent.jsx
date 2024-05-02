@@ -1,8 +1,13 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import NoteContext from "../../contexts/Notes/NoteContext";
 import NoteCard from "../NoteCard.jsx/NoteCard";
+import { useNavigate } from "react-router-dom";
 
-function NotesComponent() {
+function NotesComponent(props) {
+
+  // if not logged in them
+  const navigate = useNavigate();
+
   const context = useContext(NoteContext);
   const { notes, getAllNote, editNote } = context;
   const [modalNote, setModalNote] = useState({
@@ -43,10 +48,16 @@ function NotesComponent() {
 
     // Close Modal By Click on Update
     refClose.current.click();
+    
+    props.showAlert('Updated Succefully', 'Success')
   };
 
   useEffect(() => {
-    getAllNote();
+    if(localStorage.getItem('token')){
+      getAllNote();
+    }else{
+      navigate('/login');
+    }
   }, []);
   return (
     <>
@@ -157,7 +168,7 @@ function NotesComponent() {
         </div>
         <div className="row">
           {notes.map((note, index) => (
-            <NoteCard key={index} update={update} note={note} />
+            <NoteCard key={index} update={update} note={note} showAlert={props.showAlert} />
           ))}
         </div>
       </div>
