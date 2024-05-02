@@ -9,6 +9,8 @@ const JWT_SECRET = 'P@U#N$I%T';
 const router = express.Router();
 
 
+// Route 1: 
+// Sign up User /api/auth/createuser
 router.post('/createuser', [
     body('password', 'Enter valid pass').isLength({ min: 5 }),
     body('name', 'Enter valid name').isLength({ min: 3 }),
@@ -117,4 +119,5 @@ router.post('/getuser', fetchuser, async (req, res) => {
         return res.status(500).json({ error: 'Internal Server Error' });
     }
 })
+
 module.exports = router

@@ -22,7 +22,7 @@ router.post(
     fetchuser,
     [
         body("title", "Enter Proper Title").isLength({ min: 5 }),
-        body("description", "Enter Proper description").isLength({ min: 10 }),
+        body("description", "Enter Proper description").isLength({ min: 5 }),
     ],
     async (req, res) => {
         const errors = validationResult(req);
@@ -41,8 +41,7 @@ router.post(
                 tag,
                 user: req.user.id,
             });
-            
-            console.log('check 1');
+
             // save created note
             const saveNote = await note.save();
 
