@@ -38,12 +38,12 @@ function Login() {
         <div>
             <form  onSubmit={handleSubmit}>
                 <div className="mb-3">
-                    <label for="email" className="form-label">Email address</label>
+                    <label htmlFor="email" className="form-label">Email address</label>
                     <input type="email" className="form-control" id="email" name='email' value={userDetails.email} onChange={onChange} aria-describedby="emailHelp" />
                     <div id="emailHelp" className="form-text" >We'll never share your email with anyone else.</div>
                 </div>
                 <div className="mb-3">
-                    <label for="password" className="form-label">Password</label>
+                    <label htmlFor="password" className="form-label">Password</label>
                     <input type="password" className="form-control" id="password" name='password' value={userDetails.password} onChange={onChange} />
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
